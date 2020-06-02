@@ -1,0 +1,137 @@
+:root {
+  --color: #000;
+  --background-color: #fff;
+  --row-over-background-color: #eee;
+  --row-even-background-color: #fafafa;
+  --row-odd-background-color: var(--background-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color: #fff;
+    --background-color: #111;
+    --row-over-background-color: #333;
+    --row-even-background-color: #151515;
+  }
+}
+
+@media (max-width: 420px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  form {
+    margin: 4px 4px 0 4px;
+  }
+  td:nth-child(2) {
+    font-size: small;
+  }
+  td:nth-child(n + 3) {
+    font-size: x-small;
+  }
+}
+
+html {
+  font-family: sans-serif;
+  color: var(--color);
+  background-color: var(--background-color);
+}
+
+main {
+  margin: auto;
+  max-width: 800px;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  align-items: flex-end;
+}
+
+form > label {
+  display: flex;
+  flex-direction: column;
+}
+
+form input {
+  padding: 4px;
+  margin: 0;
+  border: 0;
+}
+
+form input[type=submit] {
+  font-weight: bold;
+}
+
+label > em {
+  font-size: small;
+  opacity: .7;
+}
+
+table {
+  width: 100%;
+  counter-reset: row;
+}
+
+th {
+  background-color: var(--row-over-background-color);
+  text-align: initial;
+}
+
+th > button {
+  border: 0;
+  color: inherit;
+  background-color: inherit;
+  cursor: n-resize;
+  height: 24px;
+  min-width: 24px;
+  opacity: .85;
+}
+
+th > button:first-of-type {
+  font-weight: bold;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--row-odd-background-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--row-even-background-color);
+}
+
+tr:hover {
+  background-color: var(--row-over-background-color);
+}
+
+tr.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+th, td {
+  padding: 8px 2px;
+}
+
+td.counter::before {
+  counter-increment: row;
+  content: counter(row);
+  opacity: .5;
+  font-size: xx-small;
+  vertical-align: middle;
+}
+
+a, a:visited {
+  color: inherit;
+  font-weight: bold;
+}
+
+footer {
+  padding: 16px;
+  text-align: center;
+  font-size: small;
+  opacity: .7;
+}
